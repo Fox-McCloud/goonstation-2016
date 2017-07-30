@@ -4604,10 +4604,7 @@
 						sleep(0)
 						if (src && src.mind)
 							src.lastgasp() // if they were ok before dropping below zero health, call lastgasp() before setting them unconscious
-					if (src.stat != 2)
-						src.stat = 1
-					//src.paralysis = max(src.paralysis, 5)
-					// losebreath can handle this part
+					paralysis = max(paralysis, 5)
 				if (-99 to -80)
 					src.take_oxygen_deprivation(1)
 					/*if (src.reagents)
@@ -4618,8 +4615,7 @@
 						src.paralysis++
 						src.contract_disease(/datum/ailment/disease/heartfailure,null,null,1)
 				if (-79 to -51)
-					/*if (src.reagents)
-						if (!src.reagents.has_reagent("inaprovaline")) src.take_oxygen_deprivation(1)*/
+					take_oxygen_deprivation(1)
 					if (prob(10)) // shock added back to crit because it wasn't working as a bloodloss-only thing
 						src.contract_disease(/datum/ailment/disease/shock,null,null,1)
 						//boutput(world, "\b LOG: ADDED SHOCK TO [src].")
